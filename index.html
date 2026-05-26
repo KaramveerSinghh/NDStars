@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ND Stars Inc | Trucking & Logistics</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Poppins',sans-serif;
+            background:#081120;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        body::before{
+            content:'';
+            position:fixed;
+            width:700px;
+            height:700px;
+            background:radial-gradient(circle,#00c6ff55,transparent 70%);
+            top:-250px;
+            right:-200px;
+            z-index:-1;
+        }
+
+        body::after{
+            content:'';
+            position:fixed;
+            width:600px;
+            height:600px;
+            background:radial-gradient(circle,#005bea55,transparent 70%);
+            bottom:-250px;
+            left:-200px;
+            z-index:-1;
+        }
+
+        header{
+            position:fixed;
+            top:0;
+            width:100%;
+            z-index:1000;
+            backdrop-filter:blur(12px);
+            background:rgba(7,15,30,0.75);
+            border-bottom:1px solid rgba(255,255,255,0.08);
+        }
+
+        .navbar{
+            max-width:1300px;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:18px 25px;
+        }
+
+        .logo{
+            font-size:30px;
+            font-weight:700;
+            color:#00c6ff;
+            letter-spacing:1px;
+        }
+
+        .nav-links{
+            display:flex;
+            gap:30px;
+            list-style:none;
+        }
+
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            font-weight:500;
+            transition:0.3s;
+            position:relative;
+        }
+
+        .nav-links a:hover{
+            color:#00c6ff;
+        }
+
+        .nav-links a::after{
+            content:'';
+            position:absolute;
+            width:0;
+            height:2px;
+            left:0;
+            bottom:-5px;
+            background:#00c6ff;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover::after{
+            width:100%;
+        }
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:120px 20px 60px;
+            position:relative;
+        }
+
+        .hero-container{
+            max-width:1300px;
+            width:100%;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:60px;
+            align-items:center;
+        }
+
+        .hero-text h4{
+            color:#00c6ff;
+            font-size:20px;
+            margin-bottom:15px;
+            letter-spacing:2px;
+        }
+
+        .hero-text h1{
+            font-size:68px;
+            line-height:1.1;
+            margin-bottom:25px;
+        }
+
+        .hero-text p{
+            color:#d5d5d5;
+            font-size:18px;
+            line-height:1.8;
+            margin-bottom:35px;
+        }
+
+        .hero-buttons{
+            display:flex;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            padding:15px 32px;
+            border-radius:50px;
+            text-decoration:none;
+            font-weight:600;
+            transition:0.3s;
+        }
+
+        .btn-primary{
+            background:linear-gradient(90deg,#00c6ff,#0072ff);
+            color:white;
+            box-shadow:0 10px 30px rgba(0,198,255,0.3);
+        }
+
+        .btn-primary:hover{
+            transform:translateY(-3px);
+        }
+
+        .btn-secondary{
+            border:1px solid rgba(255,255,255,0.2);
+            color:white;
+            background:rgba(255,255,255,0.05);
+        }
+
+        .btn-secondary:hover{
+            background:rgba(255,255,255,0.1);
+        }
+
+        .hero-image{
+            position:relative;
+        }
+
+        .hero-image img{
+            width:100%;
+            border-radius:25px;
+            box-shadow:0 30px 80px rgba(0,0,0,0.45);
+        }
+
+        .floating-card{
+            position:absolute;
+            bottom:-25px;
+            left:-25px;
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(15px);
+            border:1px solid rgba(255,255,255,0.1);
+            padding:25px;
+            border-radius:20px;
+            width:260px;
+        }
+
+        .floating-card h3{
+            color:#00c6ff;
+            margin-bottom:10px;
+        }
+
+        section{
+            padding:100px 20px;
+        }
+
+        .container{
+            max-width:1300px;
+            margin:auto;
+        }
+
+        .section-title{
+            text-align:center;
+            margin-bottom:70px;
+        }
+
+        .section-title h2{
+            font-size:48px;
+            margin-bottom:15px;
+        }
+
+        .section-title p{
+            color:#b9c1d0;
+            max-width:700px;
+            margin:auto;
+        }
+
+        .about-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:50px;
+            align-items:center;
+        }
+
+        .glass{
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.08);
+            backdrop-filter:blur(12px);
+            border-radius:25px;
+            padding:40px;
+        }
+
+        .about-text p{
+            color:#cdd4df;
+            margin-bottom:20px;
+            line-height:1.9;
+        }
+
+        .stats{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:25px;
+        }
+
+        .stat-card{
+            text-align:center;
+            padding:35px 20px;
+            border-radius:20px;
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat-card h3{
+            font-size:42px;
+            color:#00c6ff;
+        }
+
+        .services-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
+        }
+
+        .service-card{
+            padding:40px;
+            border-radius:25px;
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.08);
+            transition:0.4s;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .service-card:hover{
+            transform:translateY(-10px);
+            border-color:#00c6ff;
+        }
+
+        .service-card::before{
+            content:'';
+            position:absolute;
+            width:120px;
+            height:120px;
+            background:#00c6ff20;
+            border-radius:50%;
+            top:-50px;
+            right:-50px;
+        }
+
+        .service-icon{
+            font-size:50px;
+            margin-bottom:20px;
+        }
+
+        .service-card h3{
+            font-size:28px;
+            margin-bottom:15px;
+        }
+
+        .service-card p{
+            color:#c8d1dd;
+            line-height:1.8;
+        }
+
+        .contact-box{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+        }
+
+        .contact-info h3{
+            font-size:32px;
+            margin-bottom:25px;
+        }
+
+        .contact-item{
+            margin-bottom:25px;
+        }
+
+        .contact-item span{
+            color:#00c6ff;
+            font-weight:600;
+            display:block;
+            margin-bottom:5px;
+        }
+
+        .privacy p{
+            color:#d5dbe6;
+            margin-bottom:18px;
+            line-height:1.9;
+        }
+
+        footer{
+            padding:35px 20px;
+            text-align:center;
+            border-top:1px solid rgba(255,255,255,0.08);
+            color:#c0c7d2;
+        }
+
+        @media(max-width:1000px){
+
+            .hero-container,
+            .about-grid,
+            .contact-box{
+                grid-template-columns:1fr;
+            }
+
+            .hero-text{
+                text-align:center;
+            }
+
+            .hero-buttons{
+                justify-content:center;
+            }
+
+            .hero-text h1{
+                font-size:48px;
+            }
+
+            .floating-card{
+                position:relative;
+                left:0;
+                bottom:0;
+                margin-top:20px;
+                width:100%;
+            }
+        }
+
+        @media(max-width:700px){
+
+            .nav-links{
+                gap:15px;
+                font-size:14px;
+            }
+
+            .hero-text h1{
+                font-size:38px;
+            }
+
+            .section-title h2{
+                font-size:36px;
+            }
+
+            .stats{
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">ND Stars Inc</div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+        </ul>
+    </div>
+</header>
+
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+        <div class="hero-text">
+
+            <h4>TRUSTED TRUCKING & LOGISTICS</h4>
+
+            <h1>
+                Fast.<br>
+                Reliable.<br>
+                Nationwide Freight.
+            </h1>
+
+            <p>
+                ND Stars Inc delivers professional transportation services across the United States
+                with modern 53 ft dry vans and reefer trailers designed for safe and timely freight delivery.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Contact Us</a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1600&auto=format&fit=crop" alt="Truck">
+
+            
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>About ND Stars Inc</h2>
+            <p>
+                Professional trucking company based in Lathrop, California focused on safe and efficient logistics.
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="glass about-text">
+
+                <p>
+                    ND Stars Inc is committed to providing dependable freight transportation solutions
+                    with experienced drivers, modern equipment, and customer-focused operations.
+                </p>
+
+                <p>
+                    Our mission is to deliver freight safely, on time, and with complete transparency
+                    while maintaining strong communication with every customer.
+                </p>
+
+                <p>
+                    We proudly operate a fleet of 53 ft dry vans and reefer trailers for a variety of shipping needs.
+                </p>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h3>53 FT</h3>
+                    <p>Dry Vans</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>24/7</h3>
+                    <p>Support</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>USA</h3>
+                    <p>Nationwide Service</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Reliable Service</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>
+                Complete transportation and freight management solutions for businesses and logistics partners.
+            </p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="service-icon">🚚</div>
+
+                <h3>53 ft Dry Vans</h3>
+
+                <p>
+                    Secure transportation solutions for general freight with dependable delivery schedules.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">❄️</div>
+
+                <h3>Reefer Trailers</h3>
+
+                <p>
+                    Temperature-controlled transportation for refrigerated and frozen cargo across the country.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+
+                <h3>Freight Logistics</h3>
+
+                <p>
+                    Efficient logistics planning, dispatch coordination, and shipment communication support.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>
+                Reach out to ND Stars Inc for transportation inquiries and shipment support.
+            </p>
+        </div>
+
+        <div class="contact-box">
+
+            <div class="glass contact-info">
+
+                <h3>Company Information</h3>
+
+                <div class="contact-item">
+                    <span>Company Name</span>
+                    ND Stars Inc
+                </div>
+
+                <div class="contact-item">
+                    <span>Phone</span>
+                    +1 (209) 929-9889
+                </div>
+
+                <div class="contact-item">
+                    <span>Address</span>
+                    Lathrop, California
+                </div>
+
+                <div class="contact-item">
+                    <span>Business</span>
+                    Trucking & Logistics Services
+                </div>
+
+            </div>
+
+            <div class="glass">
+
+                <h3 style="margin-bottom:25px;">SMS & Customer Updates</h3>
+
+                <p style="line-height:1.9; color:#d7dde8;">
+                    ND Stars Inc may send shipment updates and transportation-related notifications
+                    through SMS or phone communication when necessary for operational support.
+                </p>
+
+                <br>
+
+                <a href="#privacy" class="btn btn-primary">
+                    View Privacy Policy
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="privacy">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Privacy Policy</h2>
+            <p>
+                Your privacy and communication preferences are important to us.
+            </p>
+        </div>
+
+        <div class="glass privacy">
+
+            <p>
+                ND Stars Inc respects your privacy and is committed to protecting your information.
+            </p>
+
+            <p>
+                No personal information is collected through this website unless voluntarily provided by the customer.
+            </p>
+
+            <p>
+                Personal information is used only for operational communication,
+                including shipment updates, dispatch coordination, and customer support if needed.
+            </p>
+
+            <p>
+                We do not sell, rent, or distribute personal information to outside parties.
+            </p>
+
+            <p>
+                We do not share personal information with anyone except within ND Stars Inc for business operations.
+            </p>
+
+            <p>
+                <strong>
+                    SMS consent is not shared with third parties or affiliates.
+                </strong>
+            </p>
+
+            <p>
+                By contacting ND Stars Inc, customers consent to receiving transportation-related communications
+                regarding shipments, support, and logistics updates when necessary.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>
+        © 2026 ND Stars Inc • Lathrop, California • Trucking & Logistics Services
+    </p>
+
+    <p style="margin-top:10px;">
+        Privacy Policy accessible on every page.
+    </p>
+
+</footer>
+
+</body>
+</html>
